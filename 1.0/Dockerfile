@@ -20,7 +20,8 @@ RUN rm -rf /var/www/html
 RUN ln -s /opt/phpmyadmin/ /var/www/html
 
 # Configuracion apache
-RUN echo "ServerName localhost" | tee /etc/apache2/conf.d/fqdn
+RUN echo "ServerName localhost" > /etc/apache2/conf-available/fqdn.conf
+RUN a2enconf fqdn
 RUN a2enmod rewrite
 
 # se adicionan los archivos template de configuracion
