@@ -1,0 +1,6 @@
+docker run --name phpmyadmin -p 80 --link mysqlapp:mysql -d alamilla/phpmyadmin
+
+docker run --rm -p 80 --link mysqlapp:mysql -i -t alamilla/phpmyadmin bash
+
+ID_LAST_CONTAINER=$(docker ps -l -q)
+docker logs -f $ID_LAST_CONTAINER
